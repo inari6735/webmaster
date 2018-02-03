@@ -51,7 +51,7 @@
       function ball(){
         ctx.fillStyle = 'white';
         ctx.fillRect(ballX,ballY,ballSize,ballSize);
-        
+
         ballX += ballSpeedX;
         ballY += ballSpeedY;
 
@@ -84,6 +84,21 @@
       }
 
       setInterval(game,1000/60)
+
+      topCanvas = canvas.offsetTop;
+      console.log("topCanvas")
+
+      function playerPosition(e){
+        //console.log("pozycja myszy to" + (e.clientY - topCanvas))
+        playerY = e.clientY - topCanvas - paddelHeight/2;
+        if (playerY >= ch - paddelHeight){
+          playerY = ch - paddelHeight
+        }
+        if (playerY <= 0){
+          playerY = 0;
+        }
+      }
+      canvas.addEventListener('mousemove',playerPosition)
 
     </script>
 
