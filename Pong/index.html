@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <title>Pong Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="all">
+  </head>
+  <body>
+    <canvas id="canvas" width="600" height="300"></canvas>
+
+    <script type="text/javascript">
+      const canvas = document.querySelector('canvas');
+      const ctx = canvas.getContext('2d'); //wywołanie metody
+
+      canvas.width = 1000;
+      canvas.height = 600;
+
+      const cw = canvas.width; //utworzenie zmiennej canvas width
+      const ch = canvas.height; //utworzenie zmiennej canvas height
+
+      function table(){
+        //Stół
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0,0,cw,ch); //wartośc początkowa na osi x, wartośc początkowa na osi y, długośc(ile pikseli na osi x), szerokośc(ile pikseli na osi y)
+        //Linie na środku
+        ctx.fillStyle = 'white';
+        ctx.fillRect(100,100,200,200);
+      }
+      table()
+    </script>
+
+  </body>
+</html>
