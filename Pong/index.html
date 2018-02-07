@@ -18,11 +18,11 @@
       const cw = canvas.width; //utworzenie zmiennej canvas width
       const ch = canvas.height; //utworzenie zmiennej canvas height
 
-      const ballSize = 20; //wielkośc piłki
+      const ballR = 15;
 
-      let ballX = cw/2 - ballSize/2;
-      let ballY = ch/2 - ballSize/2;
-      let ballR = 15;
+      let ballX = cw/2;
+      let ballY = ch/2;
+
 
       const paddelHeight = 100;
       const paddelWidth = 20;
@@ -36,8 +36,8 @@
       const lineWidth = 6;
       const lineHeight = 16;
 
-      let ballSpeedX = 4;
-      let ballSpeedY = 4;
+      let ballSpeedX = 1;
+      let ballSpeedY = 1;
 
       function player(){
         ctx.fillStyle = 'orange';
@@ -61,12 +61,12 @@
         ballX += ballSpeedX;
         ballY += ballSpeedY;
 
-        if(ballY <= 0 || ballY + ballSize >=ch){
+        if(ballY - ballR <= 0 || ballY + ballR >=ch){
           ballSpeedY = -ballSpeedY;
-        speedUp()
+        speedUp();
         }
 
-        if(ballX <= 0 || ballX + ballSize >=cw){
+        if(ballX - ballR <= 0 || ballX + ballR >=cw){
           ballSpeedX = -ballSpeedX
         speedUp()
         }
@@ -123,14 +123,13 @@
           ballSpeedY -= .4;
         }
       }
-      function collision(){
-      if (paddel1.playerX < ball.ballX + ball.ballSize &&
-          paddel1.playerX + paddel1.paddelWidth > ball.ballX &&
-          paddel1.playerY < ball.ballSize + ball.ballSize &&
-          paddel1.paddelHeight + paddel1.playerY > ball.playerY) {
-        ballSpeedX = -ballSpeedX
-      }
-      }
+
+      function moveByArrows(e){
+        if(e.keyCode == 38){
+          console.log('up');
+        }
+      };
+
       canvas.addEventListener('mousemove',playerPosition)
 
     </script>
