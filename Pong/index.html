@@ -20,8 +20,9 @@
 
       const ballSize = 20; //wielkośc piłki
 
-      let ballX = cw/2 - ballSize/2
-      let ballY = ch/2 - ballSize/2
+      let ballX = cw/2 - ballSize/2;
+      let ballY = ch/2 - ballSize/2;
+      let ballR = 15;
 
       const paddelHeight = 100;
       const paddelWidth = 20;
@@ -36,7 +37,7 @@
       const lineHeight = 16;
 
       let ballSpeedX = 4;
-      let ballSpeedY = 3;
+      let ballSpeedY = 4;
 
       function player(){
         ctx.fillStyle = 'orange';
@@ -49,18 +50,25 @@
       }
 
       function ball(){
+        ctx.beginPath();
+        ctx.arc(ballX,ballY,ballR,0*Math.PI,2*Math.PI);
+        ctx.strokeStyle = 'white';
+        ctx.stroke();
+        ctx.lineWidth = 0;
         ctx.fillStyle = 'white';
-        ctx.fillRect(ballX,ballY,ballSize,ballSize);
+        ctx.fill();
 
         ballX += ballSpeedX;
         ballY += ballSpeedY;
 
         if(ballY <= 0 || ballY + ballSize >=ch){
           ballSpeedY = -ballSpeedY;
+        speedUp()
         }
 
         if(ballX <= 0 || ballX + ballSize >=cw){
           ballSpeedX = -ballSpeedX
+        speedUp()
         }
 
       }
@@ -83,7 +91,7 @@
         ai()
       }
 
-      setInterval(game,1000/60)
+      setInterval(game,1000/120)
 
       topCanvas = canvas.offsetTop;
       console.log("topCanvas")
@@ -97,6 +105,31 @@
         if (playerY <= 0){
           playerY = 0;
         }
+      }
+
+      function speedUp(){
+        //prędkośc X
+        if(ballSpeedX > 0 && ballSpeedX < 16){
+          ballSpeedX += .4;
+        }
+        else if(ballSpeedX < 0 && ballSpeedX > -16){
+          ballSpeedX -= .4;
+        }
+        //prędkośc Y
+        if(ballSpeedY > 0 && ballSpeedY < 16){
+          ballSpeedY += .4;
+        }
+        else if(ballSpeedY < 0 && ballSpeedY > -16){
+          ballSpeedY -= .4;
+        }
+      }
+      function collision(){
+      if (paddel1.playerX < ball.ballX + ball.ballSize &&
+          paddel1.playerX + paddel1.paddelWidth > ball.ballX &&
+          paddel1.playerY < ball.ballSize + ball.ballSize &&
+          paddel1.paddelHeight + paddel1.playerY > ball.playerY) {
+        ballSpeedX = -ballSpeedX
+      }
       }
       canvas.addEventListener('mousemove',playerPosition)
 
