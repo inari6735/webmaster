@@ -147,7 +147,7 @@ console.log("topCanvas")
 //pozycja kursora
 //e - informacje o położeniu myszy
 function playerPosition(e) {
-	//console.log("pozycja myszy to" + (e.clientY - topCanvas))
+  //console.log("pozycja myszy to" + (e.clientY - topCanvas))
   playerY = e.clientY - topCanvas - paddleHeight / 2;
 
   //zabezpieczenie przed wyjechaniem paletki poza canvas
@@ -157,8 +157,6 @@ function playerPosition(e) {
   if (playerY <= 0) {
     playerY = 0;
   }
-
-  aiY=playerY;
 }
 
 //przyspieszenie
@@ -174,6 +172,34 @@ function speedUp() {
     ballSpeedY += .4;
   } else if (ballSpeedY < 0 && ballSpeedY > -16) {
     ballSpeedY -= .4;
+  }
+}
+
+//sztuczna inteligencja
+function aiPosition() {
+  //pozycja środka paletki
+  const middlePaddle = aiY + paddleHeight / 2;
+  //pozycja środka piłki
+  const middleBall = ballY + ballR / 2;
+
+  //druga połowa boiska
+  if (ballX > 600) {
+    if (middlePaddle - middleBall > 200) {
+      aiY -= 30;
+    } else if (middlePaddle - middleBall > 50) {
+      aiY -= 20;
+    } else if (middlePaddle - middleBall < -200) {
+      aiY += 30;
+    } else if (middlePaddle - middleBall < -50) {
+      aiY += 20;
+    }
+  } else if (ballX <= 600 && ballX > 150) {
+    //pierwsza połowa boiska
+    if (middlePaddle - middleBall > 100) {
+      aiY -= 10;
+    } else if (middlePaddle - middleBall < -100) {
+      aiY += 10;
+    }
   }
 }
 
