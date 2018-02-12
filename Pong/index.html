@@ -60,28 +60,136 @@ function ai() {
   ctx.fillRect(aiX, aiY, paddleWidth, paddleHeight);
 }
 
-function ball(){
-  ctx.beginPath();
-  ctx.arc(ballX,ballY,ballR,0*Math.PI,2*Math.PI);
-  ctx.strokeStyle = 'white';
-  ctx.stroke();
-  ctx.lineWidth = 0;
-  ctx.fillStyle = 'white';
-  ctx.fill();
-
+function ball() {
+  const middleBall = ballY + ballR / 2;
+  const middlePaddleP = playerY + paddleHeight / 2;
+  const middlePaddleAI = aiY + paddleHeight / 2;
+  //piłka
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(ballX, ballY, ballR, ballR);
   ballX += ballSpeedX;
   ballY += ballSpeedY;
-
-  if(ballY - ballR <= 0 || ballY + ballR >=ch){
+  //rozpoznawanie krawędzi
+  if (ballY <= 0 || ballY + ballR >= ch) {
     ballSpeedY = -ballSpeedY;
-  speedUp();
+    speedUp();
+  }
+  /*if(ballX<=0 || (ballX+ballR)>=cw){
+        ballSpeedX=-ballSpeedX;
+        speedUp();
+    }*/
+  if (ballX <= 0 || ballX + ballR >= cw) {
+    ballX = cw / 2 - ballR / 2;
+    ballY = ch / 2 - ballR / 2;
+
+    plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+    ballSpeedX = plusOrMinus * 4;
+    plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+    ballSpeedY = plusOrMinus * Math.round(Math.random() * 3 + 1);
   }
 
-  if(ballX - ballR <= 0 || ballX + ballR >=cw){
-    ballSpeedX = -ballSpeedX
-  speedUp()
-  }
+  if (ballX < 90 && ballX > 50) {
+    if (
+      middleBall >= middlePaddleP - 50 - ballR / 2 &&
+      middleBall <= middlePaddleP + 50 + ballR / 2
+    ) {
+      ballSpeedX = -ballSpeedX;
+      speedUp();
+      console.log(playerY + paddleHeight - ballY);
 
+      if (playerY + paddleHeight - ballY <= 10) {
+        if (ballSpeedY < 0) {
+          ballSpeedY = Math.abs(ballSpeedY);
+          ballX = playerX + paddleWidth;
+        } else {
+          ballSpeedY = Math.abs(ballSpeedY) * 1.5;
+          if (ballSpeedY > 18) {
+            ballSpeedY = 18;
+          }
+          ballX = playerX + paddleWidth;
+        }
+      } else if (playerY + paddleHeight - ballY <= 30) {
+        if (ballSpeedY < 0) {
+          ballSpeedY = -Math.abs(ballSpeedY) / 1.5;
+          ballX = playerX + paddleWidth;
+        } else {
+          ballSpeedY = Math.abs(ballSpeedY) * 1.5;
+          if (ballSpeedY > 18) {
+            ballSpeedY = 18;
+          }
+          ballX = playerX + paddleWidth;
+        }
+      } else if (playerY + paddleHeight - ballY <= 50) {
+        if (ballSpeedY < 0) {
+          ballSpeedY = -Math.abs(ballSpeedY) / 1.25;
+          ballX = playerX + paddleWidth;
+        } else {
+          ballSpeedY = Math.abs(ballSpeedY) * 1.25;
+          if (ballSpeedY > 18) {
+            ballSpeedY = 18;
+          }
+          ballX = playerX + paddleWidth;
+        }
+      } else if (playerY + paddleHeight - ballY <= 70) {
+        if (ballSpeedY < 0) {
+          ballSpeedY = -Math.abs(ballSpeedY);
+          ballX = playerX + paddleWidth;
+        } else {
+          ballSpeedY = Math.abs(ballSpeedY);
+          ballX = playerX + paddleWidth;
+        }
+      } else if (playerY + paddleHeight - ballY <= 90) {
+        if (ballSpeedY < 0) {
+          ballSpeedY = -Math.abs(ballSpeedY) * 1.25;
+          if (ballSpeedY < -18) {
+            ballSpeedY = -18;
+          }
+          ballX = playerX + paddleWidth;
+        } else {
+          ballSpeedY = Math.abs(ballSpeedY) / 1.25;
+          ballX = playerX + paddleWidth;
+        }
+      } else if (playerY + paddleHeight - ballY <= 110) {
+        if (ballSpeedY < 0) {
+          ballSpeedY = -Math.abs(ballSpeedY) * 1.5;
+          if (ballSpeedY < -18) {
+            ballSpeedY = -18;
+          }
+          ballX = playerX + paddleWidth;
+        } else {
+          ballSpeedY = Math.abs(ballSpeedY) / 1.5;
+          ballX = playerX + paddleWidth;
+        }
+      } else if (playerY + paddleHeight - ballY <= 120) {
+        if (ballSpeedY < 0) {
+          ballSpeedY = -Math.abs(ballSpeedY) * 1.5;
+          if (ballSpeedY < -18) {
+            ballSpeedY = -18;
+          }
+          ballX = playerX + paddleWidth;
+        } else {
+          ballSpeedY = -Math.abs(ballSpeedY);
+          ballX = playerX + paddleWidth;
+        }
+      }
+
+      /*if(middleBall>=middlePaddleP){
+                console.log("dol");
+            }
+            if(middleBall<=middlePaddleP){
+                console.log("gora")
+            }*/
+    }
+  }
+  if (ballX > 890 && ballX < 930) {
+    if (
+      middleBall >= middlePaddleAI - 50 - ballR / 2 &&
+      middleBall <= middlePaddleAI + 50 + ballR / 2
+    ) {
+      ballSpeedX = -ballSpeedX;
+      speedUp();
+    }
+  }
 }
 
 function table() {
