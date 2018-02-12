@@ -175,6 +175,14 @@ function speedUp() {
   }
 }
 
+function speedUpPad() {
+  if (ballSpeedX > 0 && ballSpeedX < 16) {
+    ballSpeedX += .4;
+  } else if (ballSpeedX < 0 && ballSpeedX > -16) {
+    ballSpeedX -= .4;
+  }
+}
+
 //sztuczna inteligencja
 function aiPosition() {
   //pozycja środka paletki
