@@ -9,128 +9,145 @@
     <canvas id="canvas" width="600" height="300"></canvas>
 
     <script type="text/javascript">
-      const canvas = document.querySelector('canvas');
-      const ctx = canvas.getContext('2d'); //wywołanie metody
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d"); //wywołanie metody
 
-      canvas.width = 1000;
-      canvas.height = 500;
+canvas.width = 1000;
+canvas.height = 500;
 
-      const cw = canvas.width; //utworzenie zmiennej canvas width
-      const ch = canvas.height; //utworzenie zmiennej canvas height
+//wielkośc canvas
+const cw = canvas.width; //utworzenie zmiennej canvas width
+const ch = canvas.height; //utworzenie zmiennej canvas height
 
-      const ballR = 15;
+//wielkość piłki
+const ballR = 18;
 
-      let ballX = cw/2;
-      let ballY = ch/2;
+//pozycja piłki
+let ballX = cw / 2 - ballR / 2;
+let ballY = ch / 2 - ballR / 2;
 
+//wielkość paletek
+const paddleWidth = 20;
+const paddleHeight = 100;
 
-      const paddelHeight = 100;
-      const paddelWidth = 20;
+//pozycja paletek
+//gracz
+const playerX = 70;
+let playerY = 200;
+//AI
+const aiX = 910;
+let aiY = 200;
 
-      const playerX = 70;
-      const aiX = 910;
+//wielkość linii środkowych
+const lineWidth = 6;
+const lineHeight = 20;
 
-      let playerY = 200;
-      let aiY = 200;
+//prędkośc piłki
+let plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+let ballSpeedX = plusOrMinus * 4;
+plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+let ballSpeedY = plusOrMinus * Math.round(Math.random() * 3 + 1);
 
-      const lineWidth = 6;
-      const lineHeight = 16;
+function player() {
+  //gracz
+  ctx.fillStyle = "orange";
+  ctx.fillRect(playerX, playerY, paddleWidth, paddleHeight);
+}
 
-      let ballSpeedX = 1;
-      let ballSpeedY = 1;
+function ai() {
+  //ai
+  ctx.fillStyle = "red";
+  ctx.fillRect(aiX, aiY, paddleWidth, paddleHeight);
+}
 
-      function player(){
-        ctx.fillStyle = 'orange';
-        ctx.fillRect(playerX,playerY,paddelWidth,paddelHeight);
-      }
+function ball(){
+  ctx.beginPath();
+  ctx.arc(ballX,ballY,ballR,0*Math.PI,2*Math.PI);
+  ctx.strokeStyle = 'white';
+  ctx.stroke();
+  ctx.lineWidth = 0;
+  ctx.fillStyle = 'white';
+  ctx.fill();
 
-      function ai(){
-        ctx.fillStyle = 'orange';
-        ctx.fillRect(aiX,aiY,paddelWidth,paddelHeight);
-      }
+  ballX += ballSpeedX;
+  ballY += ballSpeedY;
 
-      function ball(){
-        ctx.beginPath();
-        ctx.arc(ballX,ballY,ballR,0*Math.PI,2*Math.PI);
-        ctx.strokeStyle = 'white';
-        ctx.stroke();
-        ctx.lineWidth = 0;
-        ctx.fillStyle = 'white';
-        ctx.fill();
+  if(ballY - ballR <= 0 || ballY + ballR >=ch){
+    ballSpeedY = -ballSpeedY;
+  speedUp();
+  }
 
-        ballX += ballSpeedX;
-        ballY += ballSpeedY;
+  if(ballX - ballR <= 0 || ballX + ballR >=cw){
+    ballSpeedX = -ballSpeedX
+  speedUp()
+  }
 
-        if(ballY - ballR <= 0 || ballY + ballR >=ch){
-          ballSpeedY = -ballSpeedY;
-        speedUp();
-        }
+}
 
-        if(ballX - ballR <= 0 || ballX + ballR >=cw){
-          ballSpeedX = -ballSpeedX
-        speedUp()
-        }
+function table() {
+  //stół
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, cw, ch); //wartośc początkowa na osi x, wartośc początkowa na osi y, długośc(ile pikseli na osi x), szerokośc(ile pikseli na osi y)
+  //linie na środku
+  ctx.fillStyle = "gray";
+  for (
+    let linePosition = 20;
+    linePosition < ch;
+    linePosition += 2 * lineHeight
+  ) {
+    ctx.fillRect(cw / 2 - lineWidth / 2, linePosition, lineWidth, lineHeight);
+  }
+}
 
-      }
+function game() {
+  table();
+  ball();
+  player();
+  ai();
+  aiPosition();
+  console.log(ballSpeedY);
+}
 
-      function table(){
-        //Stół
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0,0,cw,ch); //wartośc początkowa na osi x, wartośc początkowa na osi y, długośc(ile pikseli na osi x), szerokośc(ile pikseli na osi y)
-        //Linie na środku
+setInterval(game, 1000 / 60);
 
-        for (let linePosition = 20; linePosition < ch; linePosition +=30){
-          ctx.fillStyle = 'gray';
-          ctx.fillRect(cw/2 - lineWidth/2,linePosition,lineWidth,lineHeight)
-        }
-      }
-      function game(){
-        table()
-        ball()
-        player()
-        ai()
-      }
+topCanvas = canvas.offsetTop;
+console.log("topCanvas")
 
-      setInterval(game,1000/120)
+//pozycja kursora
+//e - informacje o położeniu myszy
+function playerPosition(e) {
+	//console.log("pozycja myszy to" + (e.clientY - topCanvas))
+  playerY = e.clientY - topCanvas - paddleHeight / 2;
 
-      topCanvas = canvas.offsetTop;
-      console.log("topCanvas")
+  //zabezpieczenie przed wyjechaniem paletki poza canvas
+  if (playerY >= ch - paddleHeight) {
+    playerY = ch - paddleHeight;
+  }
+  if (playerY <= 0) {
+    playerY = 0;
+  }
 
-      function playerPosition(e){
-        //console.log("pozycja myszy to" + (e.clientY - topCanvas))
-        playerY = e.clientY - topCanvas - paddelHeight/2;
-        if (playerY >= ch - paddelHeight){
-          playerY = ch - paddelHeight
-        }
-        if (playerY <= 0){
-          playerY = 0;
-        }
-      }
+  //aiY=playerY;
+}
 
-      function speedUp(){
-        //prędkośc X
-        if(ballSpeedX > 0 && ballSpeedX < 16){
-          ballSpeedX += .4;
-        }
-        else if(ballSpeedX < 0 && ballSpeedX > -16){
-          ballSpeedX -= .4;
-        }
-        //prędkośc Y
-        if(ballSpeedY > 0 && ballSpeedY < 16){
-          ballSpeedY += .4;
-        }
-        else if(ballSpeedY < 0 && ballSpeedY > -16){
-          ballSpeedY -= .4;
-        }
-      }
+//przyspieszenie
+function speedUp() {
+  //prędkość X
+  if (ballSpeedX > 0 && ballSpeedX < 16) {
+    ballSpeedX += .4;
+  } else if (ballSpeedX < 0 && ballSpeedX > -16) {
+    ballSpeedX -= .4;
+  }
+  //prędkośc Y
+  if (ballSpeedY > 0 && ballSpeedY < 16) {
+    ballSpeedY += .4;
+  } else if (ballSpeedY < 0 && ballSpeedY > -16) {
+    ballSpeedY -= .4;
+  }
+}
 
-      function moveByArrows(e){
-        if(e.keyCode == 38){
-          console.log('up');
-        }
-      };
-
-      canvas.addEventListener('mousemove',playerPosition)
+//sterowanie paddle za pomocą myszy
+canvas.addEventListener("mousemove", playerPosition);
 
     </script>
 
