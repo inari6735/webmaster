@@ -152,14 +152,14 @@ console.log("topCanvas")
 //e - informacje o położeniu myszy
 function playerPosition(e) {
 	//console.log("pozycja myszy to" + (e.clientY - topCanvas))
-  playerY = e.clientY - topCanvas - paddleHeight / 2;
+  aiY = e.clientY - topCanvas - paddleHeight / 2;
 
   //zabezpieczenie przed wyjechaniem paletki poza canvas
-  if (playerY >= ch - paddleHeight) {
-    playerY = ch - paddleHeight;
+  if (aiY >= ch - paddleHeight) {
+    aiY = ch - paddleHeight;
   }
-  if (playerY <= 0) {
-    playerY = 0;
+  if (aiY <= 0) {
+    aiY = 0;
   }
 }
 
@@ -198,6 +198,22 @@ const move = (e) => {
         aiY = ch - paddleHeight;
       }
       break;
+  }
+  switch(e.keyCode){
+    case 87:
+    playerY = playerY - 100;
+    if(playerY < 0){
+      playerY = 0;
+    }
+    break;
+  }
+  switch(e.keyCode){
+    case 83:
+    playerY = playerY + 100;
+    if(playerY > ch - paddleHeight){
+      playerY = ch - paddleHeight;
+    }
+    break;
   }
 }
 //sterowanie paddle za pomocą myszy
