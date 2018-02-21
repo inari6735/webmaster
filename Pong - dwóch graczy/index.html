@@ -4,9 +4,15 @@
     <meta charset="utf-8">
     <title>Pong Game</title>
     <link rel="stylesheet" type="text/css" href="style.css" media="all">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
   </head>
   <body>
+    <div class="flex-center">
+      <div class="logo">
+        <h1>Pong Game</h1>
+      </div>
     <canvas id="canvas" width="600" height="300"></canvas>
+    </div>
 
     <script type="text/javascript">
 const canvas = document.querySelector("canvas");
@@ -178,7 +184,7 @@ const move = (e) => {
   switch(e.keyCode){
   //strzałka w górę
     case 38:
-      aiY = aiY - 40;
+      aiY = aiY - 100;
       if(aiY < 0){
         aiY = 0
       }
@@ -187,7 +193,7 @@ const move = (e) => {
   //strzałka w dół
   switch(e.keyCode){
     case 40:
-      aiY = aiY + 40;
+      aiY = aiY + 100;
       if(aiY > ch - paddleHeight){
         aiY = ch - paddleHeight;
       }
