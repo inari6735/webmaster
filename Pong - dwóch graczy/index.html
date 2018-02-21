@@ -1,20 +1,42 @@
-<!DOCTYPE html>
+
 <html lang="pl">
   <head>
     <meta charset="utf-8">
     <title>Pong Game</title>
     <link rel="stylesheet" type="text/css" href="style.css" media="all">
     <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   </head>
   <body>
+    <audio src="beep.mp3" controls id="sound">
+    </audio>
     <div class="flex-center">
       <div class="logo">
-        <h1>Pong Game</h1>
+        <h1 id="btn1">Pong Game</h1>
+        <h2 id="btn2">Settings</h2>
+        <h2 id="btn3">Music</h2>
+        <div id="settings">
+          <a>Game Difficulties:</a>
+            <a id="a1" href="">Easy</a>
+            <a id="a2" href="">Normal</a>
+            <a id="a3" href="">Hard</a>
+            <a id="a4" href="">Player vs Ai</a>
+            <br>
+          <a id="" id="bcolor">Ball size</a>
+          <button id="btnsize1">+</button>
+          <button id="btnsize2">-</button><br>
+          <a>Paddels Speed</a>
+          <button id="btnspeed1">+</button>
+          <button id="btnspeed2">-</button><br>
+          <a>Ball Color</a>
+          <button id="colors">Change Color</button>
+        </div>
       </div>
     <canvas id="canvas" width="600" height="300"></canvas>
     </div>
 
-    <script type="text/javascript">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d"); //wywołanie metody
 
@@ -26,7 +48,7 @@ const cw = canvas.width; //utworzenie zmiennej canvas width
 const ch = canvas.height; //utworzenie zmiennej canvas height
 
 //wielkość piłki
-const ballR = 15;
+let ballR = 15;
 
 //pozycja piłki
 let ballX = cw / 2 - ballR / 2;
@@ -54,6 +76,10 @@ let ballSpeedX = plusOrMinus * 4;
 plusOrMinus = Math.random() < 0.5 ? -1 : 1;
 let ballSpeedY = plusOrMinus * Math.round(Math.random() * 3 + 1);
 
+let speed = 100;
+
+var snd = document.getElementById("sound");
+
 function player() {
   //gracz
   ctx.fillStyle = "orange";
@@ -73,8 +99,6 @@ function ball() {
   //piłka
   ctx.beginPath();
   ctx.arc(ballX,ballY,ballR,0*Math.PI,2*Math.PI);
-  ctx.strokeStyle = 'white';
-  ctx.stroke();
   ctx.fillStyle = 'white';
   ctx.fill();
   ballX += ballSpeedX;
@@ -83,6 +107,7 @@ function ball() {
   if (ballY - ballR <= 0 || ballY + ballR >= ch) {
     ballSpeedY = -ballSpeedY;
     speedUp();
+    playAudio();
   }
   /*if(ballX<=0 || (ballX+ballR)>=cw){
         ballSpeedX=-ballSpeedX;
@@ -110,6 +135,7 @@ function ball() {
                   middleBall <= middlePaddleP + 50 - ballR / 2){
                     ballSpeedX = -ballSpeedX;
                     speedUp();
+                    playAudio();
               }
             }
             if (ballX > 890 && ballX < 930) {
@@ -117,6 +143,7 @@ function ball() {
                 middleBall <= middlePaddleAI + 50 + ballR / 2){
                 ballSpeedX = -ballSpeedX;
                 speedUp();
+                playAudio();
               }
             }
 }
@@ -179,12 +206,12 @@ function speedUp() {
   }
 }
 const move = (e) => {
-  console.log(e.keyCode)
+  //console.log(e.keyCode)
   //góra: 38, dół: 40,
   switch(e.keyCode){
   //strzałka w górę
     case 38:
-      aiY = aiY - 100;
+      aiY = aiY - speed;
       if(aiY < 0){
         aiY = 0
       }
@@ -193,34 +220,97 @@ const move = (e) => {
   //strzałka w dół
   switch(e.keyCode){
     case 40:
-      aiY = aiY + 100;
+      aiY = aiY + speed;
       if(aiY > ch - paddleHeight){
         aiY = ch - paddleHeight;
       }
       break;
   }
+  //ruch w górę (W)
   switch(e.keyCode){
     case 87:
-    playerY = playerY - 100;
+    playerY = playerY - speed;
     if(playerY < 0){
       playerY = 0;
     }
     break;
   }
+  //ruch w dół (S)
   switch(e.keyCode){
     case 83:
-    playerY = playerY + 100;
+    playerY = playerY + speed;
     if(playerY > ch - paddleHeight){
       playerY = ch - paddleHeight;
     }
     break;
   }
 }
-//sterowanie paddle za pomocą myszy
+
+function playAudio(){
+}
+
+$('#btn1').click(function(){
+  $('#btn1').hide(function(){
+    $('#btn2').show("slow");
+    $('#btn3').show("slow");
+  });
+});
+
+$('#btn2').click(function(){
+  $('#btn2').hide();
+  $('#btn3').hide();
+  $('#settings').show("slow");
+});
+//dźwięk po najechaniu myszką
+var click = document.getElementById("sound");
+
+var links = document.getElementsByTagName("a");
+var linksArray = Array.prototype.slice.call(links);
+
+linksArray.forEach(function(link) {
+    link.onmouseover = function() {
+        click.play();
+    }
+});
+
+var links = document.getElementsByTagName("h1");
+var linksArray = Array.prototype.slice.call(links);
+
+linksArray.forEach(function(link) {
+    link.onmouseover = function() {
+        click.play();
+    }
+});
+
+var links = document.getElementsByTagName("h2");
+var linksArray = Array.prototype.slice.call(links);
+
+linksArray.forEach(function(link) {
+    link.onmouseover = function() {
+        click.play();
+    }
+});
+
+$('#btnsize1').click(function(){
+  ballR = ballR + 2;
+});
+$('#btnsize2').click(function(){
+  ballR = ballR - 2;
+});
+
+$('#btnspeed1').click(function(){
+  speed = speed + 10;
+});
+$('#btnspeed2').click(function(){
+  speed = speed - 10;
+});
+$('#colors').click(function(){
+  ctx.fillStyle = 'red';
+});
+
 canvas.addEventListener("mousemove", playerPosition);
 window.addEventListener("keydown", move);
 
     </script>
-
   </body>
 </html>

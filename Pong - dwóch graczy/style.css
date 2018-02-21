@@ -4,7 +4,7 @@ body{
   height: 100vh;
   background-color: lightgray;
 }
-canvas{
+#canvas{
   border: 5px solid white;
   border-radius: 20px;
 }
@@ -32,4 +32,69 @@ h1:hover{
   text-shadow: 2px 2px 4px #000000;
   transform: scale(1.1);
   cursor: pointer;
+}
+h2:hover{
+  transition: .5s;
+  text-shadow: 2px 2px 4px #000000;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+#btn2{
+  display: none;
+  cursor: pointer;
+}
+#btn3{
+  display: none;
+  cursor: pointer;
+}
+#sound{
+  display: none;
+}
+#settings{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  display: none;
+  text-align: left;
+  padding: 10px;
+  color: black;
+}
+#a1{
+  color: green;
+  text-decoration: none;
+}
+#a2{
+  color: orange;
+  text-decoration: none;
+}
+#a3{
+  color: red;
+  text-decoration: none;
+}
+#a4{
+  color: #223e58;
+  text-decoration: none;
+}
+#a1:hover{
+  transform: scale(1.1);
+  text-shadow: 2px 2px 4px green;
+  transition: .5s;
+}
+#a2:hover{
+  transform: scale(1.1);
+  text-shadow: 2px 2px 4px orange;
+  transition: .5s;
+}
+#a3:hover{
+  transform: scale(1.1);
+  text-shadow: 2px 2px 4px red;
+  transition: .5s;
+}
+#a4:hover{
+  transform: scale(1.1);
+  text-shadow: 2px 2px 4px #223e58;
+  transition: .5s;
+}
+
+#bcolor{
+
 }
