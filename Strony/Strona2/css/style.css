@@ -1,0 +1,46 @@
+/*
+    font-family: Playfair Display, serif;
+    font-size: 12pt;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.3em:
+*/
+body{
+    font: normal 600 12pt/1.3em Playfair Display, serif;
+}
+h1{
+    font-size: 400%;  
+}
+h2{
+    font-size: 250%em;
+}
+.czerwony{
+    color: #e436e9;
+}
+p{
+    font-size: 14pt;
+    line-height: 150%;
+}
+.pogrubione{
+    font-weight: bold;
+}
+.pochylone{
+    font-style: italic;
+}
+.wyroznione{
+    color: #9b1f42;
+    font-weight: bold;
+    font-style: italic;
+}
+p.srodek{
+    clear: both;
+    text-align: center;
+}
+img{
+    float: right;
+}
+
+
+
+
+

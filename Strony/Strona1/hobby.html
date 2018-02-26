@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="Stylesheet" type="text/css" href="style.css" />
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+	<title>➤Website</title>
+	<meta name="generator" content="Geany 1.31" />
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script>
+		$(document).ready(function() {
+		$("#klik").click(function () { 
+		$('#pokaz').slideToggle('normal');
+		});
+		});
+		
+		$(document).ready(function() {
+		$("#click").click(function () { 
+		$('#show').slideToggle('normal');
+		});
+		});
+	</script>
+</head>
+
+<body>
+	
+	<div class="container">
+		<header>
+			<a href="index.html" class="tstyle1">➦ strona startowa</a>
+				<h1 class="tstyle2">Piotr Nowak</h1>
+				<h1 class="tstyle3">Web Designer</h1>
+			<div class="right">
+				<a href="portfolio.html" class="tstylea1">PORTFOLIO</a>
+				<a href="hobby.html" class="tstylea2">HOBBY</a>
+				<a href="kontakt.html" class="tstylea3">KONTAKT</a>
+			</div>
+		</header>
+		<div class="bot">
+		  <a href="https://github.com/inari6735/gitrepo" target="blank">Moje Repo</a>
+		  <ul>
+			<li>
+			  <a href="#">Linki</a>
+			  <ul>
+				<li><a href="http://lo1.sandomierz.pl/" target="_blank">Collegium</a></li>
+				<li><a href="https://www.youtube.com/" target="_blank">YouTube</a></li>
+				<li><a href="https://www.facebook.com/" target="_blank">Facebook</a></li>
+			  </ul>
+			</li>
+		  </ul>
+		</div>
+		  <section>
+			<h1 class="hobby">Moje Hobby:</h1>
+			<ol class="wypunktowanie">
+				<li id="klik" class="kursor">Polityka</li>
+				<article id="pokaz" style="display: none">
+					<p class="justify">U Arystotelesa jest rozumiana jako rodzaj sztuki rządzenia państwem, której celem jest dobro wspólne. W starożytności i średniowieczu dominowała idealizacja polityki i polityków oraz wywodzenie jej źródeł z praw natury bądź woli sił nadprzyrodzonych, służąca uzasadnianiu nierównoprawnych podziałów na uprzywilejowanych rządzących i podporządkowanych ich interesom poddanych.Zapoczątkowane w czasach nowożytnych procesy demokratyzacji sprzyjały obiektywizacji poglądów na genezę i społeczną rolę polityki i polityków. Wyrazem tego współczesna definicja zakładająca, że polityka to uzgadnianie zachowań współzależnych społeczeństw o sprzecznych interesach. Jej szersza wykładnia wyjaśnia, iż polityka to działalność polegająca na przezwyciężaniu sprzeczności interesów i uzgadnianiu zachowań współzależnych grup społecznych i wewnątrz nich za pomocą perswazji, manipulacji, przymusu i przemocy, kontestacji, negocjacji i kompromisów, służąca kształtowaniu i ochronie ładu społecznego korzystnego dla tych grup stosownie do siły ich ekonomicznej pozycji i politycznych wpływów. Realia dziejów ludzkości i współczesności dowodzą, że polityki korzystnej dla wszystkich po równo zazwyczaj nie ma. Podobnie definiuje politykę Stephen D. Tansey konstatując, że polityka obejmuje szeroki wachlarz sytuacji, w których ludzie kierujący się odmiennymi interesami działają wspólnie dla osiągnięcia celów, które ich łączą, i konkurują ze sobą, gdy cele są sprzeczne. I z tych pozycji zakłada, że warto raczej krytycznie odnieść się do standardowych akademickich definicji polityki i władzy.Za podstawę nowożytnych definicji polityki uchodzą teorie Maksa Webera, twierdzącego, że polityka to dążenie do udziału we władzy lub do wywierania wpływu na podział władzy, czy to między państwami, czy też w obrębie państwa, między grupami ludzi, jakie to państwo tworzą. I uściślającego wcześniejsze definicje konstatacją, iż istotną właściwością polityki jest "odwoływanie się do przemocy", bo w sferze stosunków politycznych "groźba przemocy i, ewentualnie, jej zastosowanie jest jednak swoistym środkiem, a zawsze ultima ratio, gdy inne środki zawiodą". Definicja ta jest o tyle uniwersalna, że akcentuje dwa wymiary polityki: wewnętrzny (wewnątrzpaństwowy) i zewnętrzny (międzypaństwowy). Ze względu na upływ czasu od powstania tej definicji (1. połowa XX wieku), dziś należałoby ją uzupełnić o stosunki państw narodowych z organizacjami międzynarodowymi oraz o stosunki między tymi organizacjami i w ich obrębie (zwłaszcza w kontekście Unii Europejskiej).</p>
+				</article>
+				<li id="click" class="kursor">Kolarstwo górskie</li>
+					<article id="show" style="display: none">
+						<p class="justify">Dyscyplina ta jest coraz bardziej popularnym i docenianym sposobem spędzania wolnego czasu. Niektórzy amatorzy uprawiający ten sport traktują go jako możliwość rozwoju fizycznego, stąd duża liczba imprez, w których kolarze górscy mogą sprawdzać swoje umiejętności. Zalety roweru górskiego i jego uniwersalność powodują, że jest on bardzo często wybierany jako środek transportu podczas eskapad górskich oraz wycieczek w trudnym terenie. Dzięki temu pojawił się całkiem nowy odłam turystyki rowerowej, zarówno prywatnej, jak też zorganizowanej, polegającej na przemierzaniu szlaków niedostępnych dla samochodów, a z powodu dużych odległości zbyt długich dla turystów pieszych.</p>
+					</article>
+				<li>Piłka nożna</li>
+				<li>Kolekcjonowanie noży</li>
+			</ol>
+		  </section>
+		  <footer class="foott">Praca na webmastera
+		  </footer>
+	</div>
+</body>
+
+</html>
+
