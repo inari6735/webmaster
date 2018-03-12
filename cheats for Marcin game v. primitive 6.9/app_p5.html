@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js" lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Projekt [wpisz nazwę]</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Umieść favicon.ico w głównym katalogu -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style media="screen">
+      #hcolor{
+        color: green;
+        width: 50%;
+        margin: 0 auto;
+      }
+      #acolor{
+        color: red;
+        text-decoration: none;
+      }
+      .divcenter{
+        width: 50%;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!--[if lte IE 9]>
+    <p class="browserupgrade">
+      Używasz <strong>przestarzałej</strong> przeglądarki.
+      Zalecamy <a href="https://browsehappy.com/">aktualizację przeglądarki</a>
+      w celu polepszenia obsługi najnowszych standardów i podniesienia poziomu bezpieczeństwa.</p>
+    <![endif]-->
+
+    <!-- Tutaj dodajesz swój kod -->
+    <!-- Tutaj dodajesz swój kod -->
+    <div id="hcolor">
+    <h1>HACKS ON</h1>
+    </div>
+
+    <div class="divcenter">
+      <ul class="menu">
+        <li><a id="acolor" href="index.html">Strona główna</a></li>
+        <li><a id="acolor" href="app_jq.html">Wersja jQuery</a></li>
+        <li><a id="acolor" href="app_p5.html">Wersja p5js</a></li>
+      </ul>
+      <a>Gravity</a><button id="btn1" type="button" name="button">+</button><button id="btn2" type="button" name="button">-</button><br>
+      <a>JSpeed</a><button id="jbtn1" type="button" name="button">+</button><button id="jbtn2" type="button" name="button">-</button><br>
+      <a>Life</a><button id="lfbtn" type="button" name="button">+</button><br>
+      <a>God Mode</a><button id="godmode1" type="button" name="button">ON</button><button id="godmode2" type="button" name="button">OFF</button><br>
+      <a>No bullets</a><button id="on1" type="button" name="button">ON</button><button id="off1" type="button" name="button">OFF</button><br>
+      <a>Jump Speed</a><button id="js1" type="button" name="button">+</button><button id="js2" type="button" name="button">-</button><br>
+    </div>
+
+    <!-- skrypt umożliwiający sprawdzanie możliwośći przeglądarki -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <!--biblioteka jQuery-->
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>-->
+    <!--jeżeli nie pobrano jQuery z sieci, spróbuj załadować ją z podfolderu js -->
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="js/plugins.js"></script>
+    <!--biblioteka p5js-->
+    <script src="js/vendor/p5.min.js"></script>
+    <script src="js/vendor/p5.dom.min.js"></script>
+    <script src="js/vendor/p5.sound.min.js"></script>
+    <!-- ewentualny kod JS ogólny -->
+    <script src="js/main.js"></script>
+    <!--kod aplikacji w p5js-->
+    <script src="js/platforms.js"></script>
+    <script src="js/spikes.js"></script>
+    <script src="js/enemies.js"></script>
+    <script src="js/app_p5.js"></script>
+
+  </body>
+</html>
