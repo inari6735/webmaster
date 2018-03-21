@@ -79,10 +79,10 @@ function lines(){
 };
 function move(){
   if(keyIsDown(38)){
-    paddlePTY = paddlePY - paddleSpeed;
+    paddlePTY = paddlePTY - paddleSpeed;
   }
   if(keyIsDown(40)){
-    paddlePTY = paddlePY + paddleSpeed;
+    paddlePTY = paddlePTY + paddleSpeed;
   }
   if(keyIsDown(87)){
     paddlePY = paddlePY - paddleSpeed;
