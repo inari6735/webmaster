@@ -24,6 +24,8 @@ ballSpeedY = -4;
 //wielkość linii środkowych
 const lineWidth = 6;
 const lineHeight = 20;
+//prędkoś poruszania się paletek
+var paddleSpeed = 10;
 
 function setup(){
   frameRate(60);
@@ -36,6 +38,7 @@ function draw(){
   ball();
   paddleOne();
   paddleTwo();
+  move();
 };
 function ball(){
   ellipse(ballX, ballY, ballSize, ballSize);
@@ -74,3 +77,17 @@ function lines(){
     rect(canvasWidth / 2 - lineWidth / 2, linePosition, lineWidth, lineHeight);
   }
 };
+function move(){
+  if(keyIsDown(38)){
+    paddlePTY = paddlePY - paddleSpeed;
+  }
+  if(keyIsDown(40)){
+    paddlePTY = paddlePY + paddleSpeed;
+  }
+  if(keyIsDown(87)){
+    paddlePY = paddlePY - paddleSpeed;
+  }
+  if(keyIsDown(83)){
+    paddlePY = paddlePY + paddleSpeed;
+  }
+}
