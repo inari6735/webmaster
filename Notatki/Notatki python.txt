@@ -1,0 +1,35 @@
+1.Komentarze w Pythonie poprzedza siê znakiem "#"
+
+2.Python posiada dwa typy liczb:
+  integers - liczby ca³kowite np. 9, 10, 11
+
+  floats - liczby zmiennoprzecinkowe np. 9.1, 10.21, 11.75
+
+  Do sprawdzenia typu liczby s³u¿y "type":
+
+  number = 9 #zmienna zawieraj¹ca cyfrê
+  print(type(number)) #funkcja s³u¿¹ca do sprawdzenia typu cyfry
+3.Konwertowanie typów danych w inne
+	x = 10
+  Wykonuje siê to za pomoc¹ trzech funkcji:
+	a) int(x) #konwertuje wartoœæ x w liczbê ca³kowit¹
+	
+	b) float(x) #konwertuje wartoœæ x w liczbê zmiennoprzecinkow¹
+
+	c) str(x) #konwertuje wartoœæ x w ci¹g znaków - string
+4.Dzia³ania w Pythonie:
+	- dodawanie (+)
+	- odejmowanie (-)
+	- mno¿enie (*)
+	- dzielenie (/)
+	- potêgowanie (**)
+	- reszta z dzielenia (%)
+5.Dodawanie i odejmowanie od zmienncyh
+  number = 9.0
+  
+  number += 5
+  number -= 2
+6.Boolean
+  Boolean to typ wartoœci, który mo¿e byæ prawdziwy(TRUE) albo fa³szywy(FALSE)
+
+  Operator '=='(równoœæ) sprawdza czy dwie porównywane zmienne s¹ równe
