@@ -1,0 +1,25 @@
+1.Backslash '\' u¿ywamy gdy chcemy unikn¹æ sytuacji z apostrofami
+  
+  dont_worry = "Don't worry about apostrophes"
+  print(dont_worry) #drukuje poprawnie
+ 
+  np. 'It\'s me' lub "She said \"Hello\""
+  print('It\'s me') #drukuje wyraz It's me
+2.Metody string'ów
+  np. lower() #pozbywa siê du¿ych liter
+      upper() #zamienia na du¿e litery
+  Aby wywo³aæ jedn¹ z tych metod nale¿y po string'u lub zmiennej(która zawiera string) dodaæ kropkê, a po niej metodê:
+  
+  monty_python = "Monty Python"
+  monty_python.lower()
+
+  "John".upper()
+3.£¹czenie stringów ze zmiennymi
+  Operator % jest u¿ywany do ³¹czenia stringów ze zmiennymi. % zamienia znak specjalny %s w stringu na zmienn¹(posiadaj¹ca string).
+  Symbol specjalny %d jest u¿ywany do zamieniania dla numerycznych i dziesiêtnych wartoœci.
+
+  name = "John"
+  print("Hello, PyCharm! My name is %s!" % name) 
+
+  years = 17
+  print("I'm %d years old" % years) #wydrukuje wówczas I'm 17 years old

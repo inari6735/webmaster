@@ -1,0 +1,40 @@
+1.Python obs³uguje powielanie string'ów poprzez mno¿enie
+  hello = "hello"
+  ten_ofhellos = hello * 10
+2.W Pythonie mo¿emy uzyskaæ dostêp do poszczególnych znaków w string'ach je¿eli znamy jego pozycjê
+  Pozycjê zaczynaj¹ siê zawsze od 0. Mog¹ równie¿ byæ negatywnymi numerami, ale wtedy liczenie zaczyna siê od prawej strony.
+  -0 to to samo co 0, negatywne wskaŸniki zaczynaj¹ siê od -1
+  
+  python = "Python"
+  print(python[0]) #drukuje tylko literê "P"
+
+  long_string = "This is a very long string!"
+  exclamation = long_string[-1]
+  print(exclamation) #drukuje znak "!"
+3.Slicing jest u¿ywany do tworzenia substring'ów(wycinków tekstu) ze strong'ów
+  str[start:end] # przedmioty zaczynaj¹ siê od koñca(-1) do pocz¹tku np. str[7:10] od 7 do 10 znaku
+  str[start:]    # przedmioty zaczynaj¹ siê od reszty szyku np. str[7:] od 7 znaku do koñca
+  str[:end]      # przedmioty, znaki od pocz¹tku do koñca np. str[:7] tylko do 7 znaku
+  str[:]         # kopia string'a, wszystkich znaków
+
+  monty_python = "Monty Python"
+  monty = monty_python[:5]
+  print(monty) #wydrukuje piêæ pierwszych znaków czyli "Monty" 
+  python = str(monty_python[6:]) #wydrukuje string "Python"
+  print(python)
+4.Aby sprawdziæ czy string zawiera substring lub specjalne znaki mo¿na u¿yæ do tego s³owa "in"
+  np. czy "ice" jest zawarte w stringu "ice cream"
+
+  ice_cream = "ice cream"
+  print("cream" in ice_cream) #TRUE
+
+  contains = "ice" in ice_cream
+  print(contains) #wydrukuje wartoœæ boolean równ¹ TRUE, poniewa¿ substring "ice" zawiera siê w stringu "ice_cream"
+5.Do sprawdzania iloœci znaków, które posiada dany string stosuje siê funkcjê len()
+  
+  phrase = """
+  It is a really long string
+  triple-quoted strings are used
+  to define multi-line strings
+  """
+  first_half = len(phrase) #zwraca iloœæ znaków znajduj¹cych siê w tym stringu

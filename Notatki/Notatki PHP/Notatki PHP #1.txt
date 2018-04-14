@@ -1,0 +1,64 @@
+1. Komentarze w PHP poprzedza siê na dwie metody:
+	# to jest komentarz
+	// to jest komentarz
+   Komentarze wielolinijkowe oznacza siê w taki sposób:
+	/* komentarz wielolinijkowy
+	   komentarz wielolinijkowy */
+2. Zmienne
+	Zmienne w PHP musz¹ zaczynaæ siê od litery (ma³ej lub du¿ej) lub underscore (pod³oga, dolna kreska _) a dalej mog¹ siê sk³adaæ z dowolnych liter, cyfr i znaków od 	kodzie ASCII powy¿ej 127
+	
+	$zmienna = 1;
+
+	Przy nazwach zmiennych respektowana jest wielkoœæ znaków czyli:
+	
+	$zmienna i $Zmienna to dwie ró¿ne zmienne
+3.Typy zmiennych
+	- liczby ca³kowite (integer)
+	- liczby rzeczywiste (double)
+	- ci¹gi (string)
+	- tablice (array)
+	- obiekty (object)
+
+  a) Zmiana typu zmiennej
+	<?php
+	blah = "0";  // $blah jest ci¹giem (ASCII 48)
+	$blah++;      // $blah jest ci¹giem "1" (ASCII 49)
+	$blah += 1;   // $blah jest teraz wartoœci¹ ca³kowit¹ (2)
+	$blah = $foo + 1.3;  // $blah jest wartoœci¹ rzeczywist¹ (1.3)
+	$blah = 5 + "10 Malutkich Œwinek"; // $blah jest wartoœci¹ ca³kowit¹ (15)
+	$blah = 5 + "10 Ma³ych Œwiñ";     // $blah jest wartoœci¹ ca³kowit¹ (15)
+	?>
+  b) Rzutowanie zmiennych
+	
+	Przyk³ad: <?php
+		   $liczba_calkowita = 10;
+
+	           $liczba_rzeczywista = (real) $liczba_calkowita;
+	          ?>
+
+  		Dozwolone typy rzutowañ:
+
+			- Cast(efekt jest jednorazowy):
+				(int), (integer) – rzutuj do typu ca³kowitego
+				(real), (double), (float) – rzutuj do typu rzeczywistego
+				(string) – rzutuj do ci¹gu
+				(array) – rzutuj do tablicy
+				(object) – rzutuj do obiektu
+
+			- Za pomoc¹ funkcji settype(efekt trwa³y):
+				
+				„integer”
+				„double”
+				„string”
+				„array”
+				„object”
+
+					<?php
+
+  					 $zmienna = 10.3;
+   					 echo "$zmienna <br>"; // Wyœwietlona wartoœæ to "10.3"
+
+   					 settype($zmienna, "integer");
+   					 echo "$zmienna <br>"; // Wyœwietlona wartoœæ to "10"
+
+					?>
