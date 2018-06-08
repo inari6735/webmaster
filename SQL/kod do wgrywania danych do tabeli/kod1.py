@@ -15,16 +15,6 @@ def dane_z_pliku(nazwa_pliku):
     return dane  # print(dane)
 
 
-def kwerenda1(cur):
-    cur.execute("""
-        SELECT name AS nazwa, genre AS gatunek FROM filmy
-    """)
-
-    wyniki = cur.fetchall()
-    for rekord in wyniki:
-        print(rekord)
-
-
 def main(args):
     dane_z_pliku('filmy.txt')
     exit()
@@ -34,8 +24,6 @@ def main(args):
 
     with open('filmy.sql', 'r') as plik:
         cur.executescript(plik.read())
-
-    kwerenda1(cur)
 
     con.commit()  # zatwierdzenie wszystkich operacji w bazie
     return 0
