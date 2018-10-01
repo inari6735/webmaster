@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-10-01T07:14:00+02:00
+
+====== Bazy danych ======
+Created poniedziałek 01 października 2018
+
+Więzy integralności(constraints)
+id INTEGER PRIMARY KEY AUTONUMERIC
+AURONUMERIC # automatycznie uzupełnia cyfry-liczby (1, 2, 3, 4, 5 ...)
+
+UNIQUE - unikalność wartości w kolumnie
+NOT NULL - nie dopuszczenie pustych wartości
+DEFAULT - wartość domyślna np. ""
+FOREIGN KEY - klucz obcy - albo - nazwa_pola REFERENCES tabela(inne_pole)
+CHECK num1 > num2 - testowanie wartości
+
+ON DELETE CASCADE - jezeli usuniemy dane z o kliencie to usunięte zostaną informacje o kupowanym przez niego produkcie
+
+ON DELETE SET NULL/SET DEFAULT
+
+Typy Danych:
+VARCHAR(20) - max 20 znaków jednak po wpisaniu 10 nie wypełnia pozostałych spacjami
+REAL - liczby zmiennoprzecinkowe
+NUMERIC, DECIMAL - 1 miejsce po przecinku np. 10,5
+BOOLEAN(0, 1) - 0-fałsz, 1-prawda
+TEXT
