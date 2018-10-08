@@ -7,7 +7,7 @@ Created poniedziałek 01 października 2018
 
 Więzy integralności(constraints)
 id INTEGER PRIMARY KEY AUTONUMERIC
-AURONUMERIC # automatycznie uzupełnia cyfry-liczby (1, 2, 3, 4, 5 ...)
+AUTONUMERIC # automatycznie uzupełnia cyfry-liczby (1, 2, 3, 4, 5 ...)
 
 UNIQUE - unikalność wartości w kolumnie
 NOT NULL - nie dopuszczenie pustych wartości
