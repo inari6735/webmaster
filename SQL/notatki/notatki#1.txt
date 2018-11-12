@@ -1,0 +1,36 @@
+ALTER TABLE - pozwala na wprowadzenie specjalnych zmian
+ADD COLUMN - dodaje now¹ kolumnê do tablicy
+	np:
+	ALTER TABLE klasa
+	ADD COLUMN uczen TEXT;
+
+UPDATE - klauzula, która edytuje wiersz w tabeli
+SET - wskazuje kolumnê do edycji
+WHERE - wskazuje, które dok³adnie wiersze maj¹ zostaæ edytowane
+	np:
+	UPDATE klasa
+	SET uczen = "Piotrek"
+	WHERE id = 4;
+
+DELETE FROM - klauzula, która usuwa wiersze z tabeli
+WHERE - wskazuje, które dok³¹dnie wiersze ma usun¹æ
+	np:
+	DELETE FROM klasa
+	WHERE uczen IS NULL; (usuwa wszystkie wiersze uczen, które nie maj¹ wartoœci)
+
+PRIMARY KEY - klucz g³ówny
+UNIQUE - kolumny maj¹ inne wartoœci dla ka¿dego wiersza
+NOT NULL - kolumny musz¹ zawieraæ jakieœ wartoœci
+DEFAULT - domyœlnie przypisuje wartoœæ jak¹ wyznaczymy
+	np:
+	CREATE TABLE klasa (
+		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		uczen TEXT UNIQUE,
+		data_ur DATE NOT NULL,
+		klasa TEXT DEFAULT '2a'
+	);
+
+AS - pozwala zmieniæ nazwê kolumny lub tabeli(zmienia tylko "lokalnie")
+	np:
+	SELECT name AS 'nazwa'
+	FROM filmy;
