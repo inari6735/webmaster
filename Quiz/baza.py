@@ -1,23 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  baza.py
+#baza.py
 
-import sqlite3
+import os
+from modele import *
 import csv
-import os.path
-
-def czy_jest(plik):
-    """ Funkcja sprawdza istnienie pliku na dysku """
-    if not os.path.isfile(plik):
-        print("Plik {} nie istnieje!".format(plik))
-        return False
-    return True
-
 
 def dane_z_pliku(nazwa_pliku, separator=','):
+    
     dane = []  # pusta lista na dane
-    if not czy_jest(nazwa_pliku):
+    
+    if not os.path.isfile(nazwa_pliku):
+        print("Plik {} nie istnieje.".format(nazwa_pliku))
         return dane
     
     with open(nazwa_pliku, 'r', newline='', encoding='utf-8') as plik:
@@ -25,22 +20,40 @@ def dane_z_pliku(nazwa_pliku, separator=','):
         for rekord in tresc:
             rekord = [x.strip() for x in rekord]  # oczyszczamy dane
             dane.append(rekord)  # dodawanie rekordów do listy
+    
     return dane
 
+
 def dodaj_dane(dane):
-    dane = {
-        Pytanie: 'pytania',
-        Odpowiedź: 'odpowiedzi'
-    }
     
     for model, plik in dane.items():
         pola = [pole for pole in model._meta.fields]
-        pola.pop(0)
-        wpisy = dane_z_pliku(plik + '.csv')
+        pola.pop(0)  # usunięcie klucza głównego = id
+        
+        wpisy = dane_z_pliku(plik + '.csv', ';')
+        #print(wpisy)
         with baza.atomic():
             model.insert_many(wpisy, fields=pola).execute()
 
+
 def main(args):
+    
+    if os.path.exists(baza_plik):
+        os.remove(baza_plik)
+    
+    baza.connect() #połączenie z bazą
+    baza.create_tables([Kategoria, Pytanie, Odpowiedz])
+    
+    dane = {
+        Kategoria: 'kategorie',
+        Pytanie: 'pytania',
+        Odpowiedz: 'odpowiedzi',
+    }
+    
+    dodaj_dane(dane)
+    baza.commit()
+    baza.close()
+
     return 0
 
 if __name__ == '__main__':

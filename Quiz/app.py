@@ -3,18 +3,20 @@
 #
 #  app.py
 
-from flask import Flask
+from views import *
+from flask import g, Flask
 from flask import render_template
-app = Flask(__name__)
+from modele import *
 
-# widok domyślny
-@app.route("/")
-def hello():
-    return render_template('index.html')
-    
-@app.route("/strona")
-def strona():
-    return render_template('strona.html')
+@app.before_request
+def before_request():
+    g.db = baza
+    g.db.connect()
+
+@app.after_request
+def after_request(response):
+    g.db.close()
+    return response
 
 if __name__ == '__main__':
     app.run(debug=True)
