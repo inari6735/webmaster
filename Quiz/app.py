@@ -8,6 +8,11 @@ from flask import g, Flask
 from flask import render_template
 from modele import *
 
+app.config.update(dict(
+    SECRET_KEY='bardzosekretnyklucz',
+    TITLE='Aplikacja Quiz',
+))
+
 @app.before_request
 def before_request():
     g.db = baza
