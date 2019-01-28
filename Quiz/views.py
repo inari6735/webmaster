@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 # widok domyślny
 @app.route("/")
-def hello():
+def index():
     return render_template('index.html')
     
 @app.route("/lista")
