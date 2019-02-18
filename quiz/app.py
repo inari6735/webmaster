@@ -2,11 +2,9 @@
 # -*- coding: utf-8 -*-
 #
 #  app.py
-
-from views import *
-from flask import g, Flask
-from flask import render_template
+from flask import g
 from modele import *
+from views import *
 
 app.config.update(dict(
     SECRET_KEY='bardzosekretnyklucz',
