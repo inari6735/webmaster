@@ -1,0 +1,2 @@
+[25-Feb-2019 08:14:45 Europe/Warsaw] PHP Parse error:  syntax error, unexpected 'function' (T_FUNCTION) in /home/kl2ag2/public_html/inc/functions.php on line 10
+[25-Feb-2019 08:15:24 Europe/Warsaw] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/kl2ag2/public_html/inc/functions.php on line 39

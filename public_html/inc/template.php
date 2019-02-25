@@ -40,7 +40,7 @@
 
     <header class="bg-primary text-white">
       <div class="container text-center">
-        <h1>Aplikacja w PHP</h1>
+        <h1><?php get_page_title($id); ?></h1>
         <p class="lead">Dodatkowy tekst</p>
       </div>
     </header>
@@ -49,7 +49,12 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto">
-         
+            
+            <?php
+                get_kom();
+                get_page_content($id);
+            ?>
+          
           </div>
         </div>
       </div>
