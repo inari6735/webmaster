@@ -34,8 +34,21 @@ function get_menu($id){ // funkcja generująca linki w menu
     foreach ($pages as $klucz => $wartosc){
         echo
         '<li class="nav-item">
-            <a class=\"nav-link js-scroll-trigger" href="?id='.$klucz.'">.$wartosc.</a>
+            <a class=\"nav-link js-scroll-trigger" href="?id='.$klucz.'">'.$wartosc.'</a>
         </li>'; // ?id zmienne przekazywane za pomocą GET
     }
 }
+
+function clrtxt(&$el, $maxdl=20) {
+    if(is_array($el)) {
+        return array_map('clrtxt', $el);
+    } else {
+        $el = trim($el); // usuwanie niepotrzebnych spacji
+        $el =substr($el, 0, $maxdl); // obcina ilość znaków
+        if(get_magic_quotes_gpc()) $el=stripsslashes($el);
+        $el=htmlspecialchars($el, ENT_QUOTES);
+        return $el;
+    }
+}
+
 ?>

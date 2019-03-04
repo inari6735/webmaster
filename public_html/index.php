@@ -10,8 +10,10 @@ define('DBASE', 'db/');
 require_once(DINC.'functions.php'); // require - musisz dolaczyc inaczej aplikacja nie bedzie dzialac
 require_once(DBASE.'db.php');
 $dbfile=DBASE.'db.sqlite';
+$db=null;
+$mode=PDO::FETCH_ASSOC;
 init_baza($dbfile);
-db_query($initstr);
+// db_exec($initstr);
 
 $id='witam';
 if (isset($_GET['id']))

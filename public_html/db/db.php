@@ -54,7 +54,7 @@ CREATE TABLE users (
     email CHAR(40) UNIQUE NOT NULL,
     datad INT NOT NULL
 );
-INSERT INTO users VALUES (NULL, 'admin', '".sha1('haslo')."', 'admin@home.net', time());
+INSERT INTO users VALUES (NULL, 'admin', '".sha1('haslo')."', 'admin@home.net', ".time().");
 COMMIT;
 ";
 ?>
